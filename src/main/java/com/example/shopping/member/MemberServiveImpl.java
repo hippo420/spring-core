@@ -1,0 +1,21 @@
+package com.example.shopping.member;
+
+public class MemberServiveImpl implements MemberService{
+
+    //private final MemberRepository memberRepository= new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberServiveImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
+    @Override
+    public void join(Member member) {
+        memberRepository.save(member);
+    }
+
+    @Override
+    public Member findMember(String memberId) {
+        return memberRepository.findById(memberId);
+    }
+}
