@@ -7,17 +7,18 @@ import com.example.shopping.member.MemberServiveImpl;
 import com.example.shopping.order.Order;
 import com.example.shopping.order.OrderService;
 import com.example.shopping.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
 
-
+    //DI의존성주입
 
     public static void main(String[] args) {
-        AppConfig appConfig = new AppConfig();
-
-        MemberService memberService = appConfig.memberService();
-        OrderService orderService = appConfig.orderService();
-
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService",MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService",OrderService.class);
+        
         Member member = new Member("gaebabja111","gae", Grade.GALAXY);
         memberService.join(member);
 
