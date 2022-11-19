@@ -3,10 +3,8 @@ package com.example.shopping;
 import com.example.shopping.member.Grade;
 import com.example.shopping.member.Member;
 import com.example.shopping.member.MemberService;
-import com.example.shopping.member.MemberServiveImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.AbstractApplicationContext;
 
 public class MemberApp {
 
