@@ -15,26 +15,27 @@ public class AppConfig {
 
     @Bean
     public MemberService memberService(){
-
+        System.out.println("call => memberService");
         return new MemberServiceImpl(memoryMemberRepository());
     }
 
     @Bean
     public MemoryMemberRepository memoryMemberRepository(){
-
+        System.out.println("call => memoryMemberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
-
+        System.out.println("call => orderService");
         return new OrderServiceImpl(memoryMemberRepository(),crazyPointPolicy());
     }
 
     @Bean
     public CrazyPointPolicy crazyPointPolicy(){
-
         return new CrazyPointPolicy();
     }
+
+
 
 }
