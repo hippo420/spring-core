@@ -5,8 +5,11 @@ import com.example.shopping.member.MemberRepository;
 import com.example.shopping.member.MemoryMemberRepository;
 import com.example.shopping.point.NonCrazyPointPolicy;
 import com.example.shopping.point.PointPolicy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class OrderServiceImpl implements OrderService{
+@Component
+public class OrderServiceImpl implements OrderService {
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
     //private final PointPolicy pointPolicy = new NonCrazyPointPolicy();
@@ -16,20 +19,40 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final PointPolicy pointPolicy;
 
-    public OrderServiceImpl(MemberRepository memberRepository, PointPolicy pointPolicy) {
+
+    /*
+    * 선택적 의존관계 주입 => @Autowired(required = false)
+    @Autowired(required = false)
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("memberRepository");
         this.memberRepository = memberRepository;
+    }
+
+    @Autowired(required = false)
+    public void setPointPolicy(PointPolicy pointPolicy) {
+        System.out.println("setPointPolicy");
         this.pointPolicy = pointPolicy;
     }
+    */
+
+    //ComponentScan을 사용하기 때문에 의존성을 자동주입함
+
+        @Autowired
+        public OrderServiceImpl(MemberRepository memberRepository, PointPolicy pointPolicy) {
+            System.out.println("OrderServiceImpl");
+            this.memberRepository = memberRepository;
+            this.pointPolicy = pointPolicy;
+        }
 
     @Override
     public Order createOrder(String memberId, String itemName, int itemPrice) {
         Member member = memberRepository.findById(memberId);
-        int savePoint = pointPolicy.savePoint(member,itemPrice);
+        int savePoint = pointPolicy.savePoint(member, itemPrice);
 
-        return new Order(memberId, itemName, itemPrice,savePoint);
+        return new Order(memberId, itemName, itemPrice, savePoint);
     }
 
-    public MemberRepository getMemberRepository(){
+    public MemberRepository getMemberRepository() {
         return memberRepository;
     }
 }

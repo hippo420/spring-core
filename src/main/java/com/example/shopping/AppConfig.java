@@ -28,7 +28,9 @@ public class AppConfig {
     @Bean
     public OrderService orderService(){
         System.out.println("call => orderService");
-        return new OrderServiceImpl(memoryMemberRepository(),crazyPointPolicy());
+        //필드 의존관계 주입 주석
+        //return new OrderServiceImpl(memoryMemberRepository(),crazyPointPolicy());
+        return null;
     }
 
     @Bean
