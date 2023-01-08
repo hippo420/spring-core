@@ -20,23 +20,8 @@ public class OrderServiceImpl implements OrderService {
     private final PointPolicy pointPolicy;
 
 
-    /*
-    * 선택적 의존관계 주입 => @Autowired(required = false)
-    @Autowired(required = false)
-    public void setMemberRepository(MemberRepository memberRepository) {
-        System.out.println("memberRepository");
-        this.memberRepository = memberRepository;
-    }
-
-    @Autowired(required = false)
-    public void setPointPolicy(PointPolicy pointPolicy) {
-        System.out.println("setPointPolicy");
-        this.pointPolicy = pointPolicy;
-    }
-    */
 
     //ComponentScan을 사용하기 때문에 의존성을 자동주입함
-
         @Autowired
         public OrderServiceImpl(MemberRepository memberRepository, PointPolicy pointPolicy) {
             System.out.println("OrderServiceImpl");
