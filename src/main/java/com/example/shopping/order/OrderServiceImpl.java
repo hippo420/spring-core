@@ -7,10 +7,10 @@ import com.example.shopping.point.NonCrazyPointPolicy;
 import com.example.shopping.point.PointPolicy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -21,6 +21,11 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final PointPolicy pointPolicy;
 
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") PointPolicy pointPolicy){
+        this.memberRepository = memberRepository;
+        this. pointPolicy=pointPolicy;
+    }
 
     @Override
     public Order createOrder(String memberId, String itemName, int itemPrice) {

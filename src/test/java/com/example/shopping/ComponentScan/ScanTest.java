@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ScanTest {
-
+    //~~~ServiceImpl에서 실제 사용되는 빈 @Component추가하면 됨.
     @Test
     @DisplayName("AutoAppConfig 테스트")
     void ScanTest(){
