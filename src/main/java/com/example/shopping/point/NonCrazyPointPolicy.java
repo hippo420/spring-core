@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier("NonCrazyPointPolicy")
 public class NonCrazyPointPolicy implements PointPolicy {
 
     private int Point = 500;

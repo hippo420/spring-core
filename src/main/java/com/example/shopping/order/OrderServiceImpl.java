@@ -22,9 +22,9 @@ public class OrderServiceImpl implements OrderService {
     private final PointPolicy pointPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") PointPolicy pointPolicy){
+    public OrderServiceImpl(MemberRepository memberRepository, PointPolicy pointPolicy){
         this.memberRepository = memberRepository;
-        this. pointPolicy=pointPolicy;
+        this.pointPolicy=pointPolicy;
     }
 
     @Override
