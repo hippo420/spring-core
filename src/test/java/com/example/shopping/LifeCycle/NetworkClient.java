@@ -3,7 +3,7 @@ package com.example.shopping.LifeCycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient implements InitializingBean,DisposableBean{
+public class NetworkClient{
 
     private String url;
 
@@ -30,17 +30,17 @@ public class NetworkClient implements InitializingBean,DisposableBean{
         System.out.println("연결종료.....["+url+"]");
     }
 
-    //의존관계 주입이 끝나면(InitializingBean) 초기화 콜백메서드
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("InitializingBean.afterPropertiesSet()");
+    //설정정보 초기화 지정 콜백메서드
+    public void init() throws Exception {
+        System.out.println("NetworkClient.init()");
         connect();
         call("초기화 연결 메시지");
     }
 
-    //(DisposableBean) 소멸전 콜백메서드
-    @Override
-    public void destroy() throws Exception {
+    //설정정보 소멸전 지정 콜백메서드
+    public void close() throws Exception {
+        System.out.println("NetworkClient.close()");
+
         disconnect();
     }
 }
