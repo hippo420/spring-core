@@ -4,7 +4,7 @@ import com.example.shopping.member.Member;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class NonCrazyPointPolicy implements PointPolicy {
 
     private int Point = 500;
